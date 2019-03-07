@@ -57,6 +57,7 @@ function loadJson() {
 
     var htmlString = [];
     htmlString.push("<table border='1'>");
+    htmlString.push("<tbody id='fleet'>");
     htmlString.push("<tr>");
     htmlString.push("<td>MF</td><td>Colour</td><td>Engine</td>");
 
@@ -92,13 +93,39 @@ function loadJson() {
 
 
     }
+    htmlString.push("</tbody>");
     htmlString.push("</table>");
 
     document.getElementById("outputPanel").innerHTML = htmlString.join(" ");
 
 
+var fleetString = fleet.map( obj => {
 
+    return obj.colour;
 
+})
+
+console.log(fleetString);
+
+var fleetString2 = fleet.map( obj => {
+
+    return `<tr><td>${obj.mf}</td><td>${obj.engine}</td><td>${obj.colour}</td></tr>`;
+
+})
+
+console.log(fleetString2);
+document.getElementById('fleet').innerHTML = fleetString2.join(" ");
+
+//https://stackoverflow.com/questions/684672/how-do-i-loop-through-or-enumerate-a-javascript-object
+var fleetString3 = fleet.map( obj => {
+console.log("-----------------------");
+    for(var key in obj) {
+
+        console.log(key + " -> " + obj[key]);
+    }
+    return obj;
+
+})
 
 
 }
